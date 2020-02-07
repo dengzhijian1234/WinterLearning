@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+    #phoneBox{
+      width: 320px;
+      height: 520px;
+      position: relative;
+      margin: 50px auto;
+    }
+    #phone{
+      width: 260px;
+      height: 480px;
+      border: 3px solid #010c7e;
+      margin: 8px auto;
+      border-radius: 20px;
+      position: relative;
+      background-color: #010c7e;
+    }
+    #header{
+      width: 260px;
+      height: 10px;
+      /* border: 1px solid red; */
+      position: absolute;
+      /* margin: 0; */
+      top: 15px;
+      float: left;
+    }
+    #a{
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color:black;
+      position: absolute;
+      left: 40px;
+      opacity: 0.4;
+    }
+    #b{
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: #000;
+      position: absolute;
+      top: 2px;
+      left: 80px;
+    }
+    #c{
+      width: 40px;
+      height: 4px;
+      border-radius: 30%;
+      background-color: #000;
+      position: absolute;
+      top: 3px;
+      left: 110px;
+    }
+    #box{
+      width: 254px;
+      height: 400px;
+      background: #fff;
+      position: absolute;
+      left: 3px;
+      top: 40px;
+    }
+    #box1{
+      width: 254px;
+      height: 356px;
+      position: absolute;
+      bottom: 0;
+      background-color: #fff;
+      overflow: scroll;
+    }
+    #box2{
+      width: 254px;
+      height: 40px;
+      background-color: #f5f6fa;
+      position: absolute;
+      bottom: 0;
+      /* border: 1px solid red; */
+    }
+    #btn{
+      width: 56px;
+      height: 20px;
+      border-radius: 10px;
+      position: absolute;
+      bottom: 10px;
+      left: 100px;
+      background-color: #010c7e;
+    }
+    #img{
+      width: 20px;
+      height: 20px;
+      /* border: 1px solid red; */
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+    #txt{
+      width: 160px;
+      height: 20px;
+      background-color: #fff;
+      border-radius: 4px;
+      position: absolute;
+      top: 10px;
+      left:40px;
+    }
+    #btn1{
+      width: 40px;
+      height: 20px;
+      position: absolute;
+      top: 10px;
+      right: 5px;
+      font-size: 10px;
+      border: none;
+    }
+    li{
+      list-style:none;
+      /* border: 1px solid red; */
+    }
+   .left , .right{
+    margin-bottom: 13px;
+   }
+   .left{
+     margin-left: -20px;
+   }
+   .left img{
+     /* float: left; */
+     width: 20px;
+     height: 20px;
+     margin-right: 5px;
+   }
+   .left span {
+     /* float: left; */
+     background: #e5e5e5;
+     border-radius: 5px;
+   }
+   .right{
+     margin-right: 20px;
+   }
+   .right img {
+     /* float: right; */
+     width: 20px;
+     height: 20px;
+     /* margin-left: 10px; */
+     position: relative;
+     left: 170px;
+     top: 2px;
+     /* margin-left: 10px; */
+   }
+   .right span {
+     background: #e5e5e5;
+     border-radius: 5px;
+     /* float: right; */
+     /* position: absolute; */
+     position: relative;
+     left: 78px;
+     /* right: 50px; */
+   }
+  </style>
+  <body>
+    <div id="phoneBox">
+      <div id="phone">
+        <div id="header">
+          <div id="a"></div>
+          <div id="b"></div>
+          <div id="c"></div>
+        </div>
+        <div id="box">
+          <img style="width:254px;height:400px;" src="./imgs/bgi.jpg" alt="">
+          <div id="box1">
+            <ul id="list">
+            
+            </ul>
+          </div>
+          <div id="box2">
+            <div><img id="img" src="./imgs/1.jpg" alt="" style="width: 20px;height: 20px;"></div>
+            <input id="txt" type="text" style="border:none;">
+            <button id="btn1">发送</button>
+          </div>
+        </div>
+        <button id="btn"></button>
+      </div>
+    </div>
+  <script>
+    var oImg = document.getElementById('img')
+
+    var a = true
+    oImg.onclick = function () {
+      if (a) {
+        oImg.src = './imgs/2.jpg'
+        a = false
+      }else{
+        oImg.src = './imgs/1.jpg'
+        a = true
+      }
+    }
+    var oBtn = document.getElementById('btn1')
+    var oText = document.getElementById('txt')
+    var oList = document.getElementById('list')
+
+    oBtn.onclick =function () {
+      var value = oText.value
+      if (value == '') {
+        alert("不能为空")
+      }else{
+        if (a) {
+          oList.innerHTML += '<li class="left"><img src="./imgs/1.jpg" alt=""> <span> ' + value + ' </span></li>'
+        }
+        else{
+          oList.innerHTML += '<li class="right"><img src="./imgs/2.jpg" alt=""><span> ' + value + ' </span></li>'
+        }
+        oText.value = ''
+      }
+    }
+  </script>
+</body>
+</html>
