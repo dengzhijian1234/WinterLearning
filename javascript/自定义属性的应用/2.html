@@ -32,9 +32,9 @@
     var aBox = oBox.getElementsByTagName('input')
     var arr = ['B','C','D']
     for (var i=0; i<aBox.length; i++) {
-      aBox[i].num = 0
+      aBox[i].num = 0   // 创建自定义属性
       aBox[i].onclick = function () {
-        var a = arr[this.num]
+        var a = arr[this.num]  
         this.num ++
         this.value = a
         if(this.num == arr.length) {
