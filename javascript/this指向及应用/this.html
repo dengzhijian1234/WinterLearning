@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <input id="btn" type="button" value="按钮">
+
+  <div onclick=" this; fn2()"></div>
+
+  <!-- this 指向 div -->
+  <!-- fn2 里面的this指向window -->
+
+
+  <script>
+    // alert(this) //[object Window] 
+
+    // window 是js 的老大
+    // window.alert(this)
+
+    function fn1() {
+      // this: 这个
+      // this: 指的是调用当前方法（函数） 的那个对象
+      alert(this) // [object Window] 
+    }
+    fn1() // window.fn1()
+
+    var oBtn = document.getElementById('btn')
+
+    // oBtn.onclick = fn1 // [object HTMLInputElement] 
+
+
+    oBtn.onclick = function () {
+      // 只要是fn1()  这样的调用， this指向就是window
+      fn1()  // [object Window] 
+    }
+
+
+
+
+
+    function fn2() {
+      this
+    }
+
+    // fn2()  this => window 
+    // oDiv.onclick = fn2  this => oDiv 
+
+    // oDiv.onclick = function () {
+    //   this   // this => oDiv
+    //   fn2() // fn2 里面的 this 指的是 window
+    // }
+  </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <ul id="list">
+    <li>
+      <ul>
+        <h2>小黄人1</h2>
+        <li>小钟</li>
+        <li>小白</li>
+        <li>唐子</li>
+        <li>叶明</li>
+      </ul>
+      <ul>
+        <h2>小黄人2</h2>
+        <li>志坚</li>
+        <li>医生</li>
+        <li>军哥</li>
+        <li>昊哥</li>
+      </ul>
+      <ol>
+        <h2>干扰</h2>
+        <li>dd</li>
+        <li>dd</li>
+        <li>dd</li>
+      </ol>
+      <ul>
+        <h2>小黄人</h2>
+        <li>猪肉</li>
+        <li>鸡蛋</li>
+        <li>佳音</li>
+      </ul>
+      <ul>
+        <h2>老婆</h2>
+        <li>小丽</li>
+      </ul>
+    </li>
+  </ul>
+  <script>
+    var oUl = document.getElementById('list')
+    var aUl = oUl.getElementsByTagName('ul')
+    var len = aUl.length
+    var a = null
+
+    for (var i=0; i<len; i++) {
+      a = aUl[i].getElementsByTagName('li')
+      for ( var j=0; j<a.length; j++ ) {
+        a[j].style.border = '1px solid red'
+      }
+    }
+  </script>
+</body>
+</html>

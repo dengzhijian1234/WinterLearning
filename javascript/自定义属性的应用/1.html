@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div{
+      width: 100px;
+      height: 100px;
+      border: 1px solid red;
+      float: left;
+      margin-right: 100px;
+    }
+    img{
+      width: 100px;
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div><img src="./imgs/1.jpg" alt=""></div>
+  <div><img src="./imgs/1.jpg" alt=""></div>
+  <div><img src="./imgs/1.jpg" alt=""></div>
+
+  <script>
+    var aImg = document.getElementsByTagName('img')
+
+    for(var i=0; i<aImg.length; i++) {
+      aImg[i].onOff = true
+
+      aImg[i].onclick = function () {
+        if(this.onOff) {
+          this.src = './imgs/2.jpg'
+          this.onOff = false
+        }
+        else {
+          this.src = './imgs/1.jpg'
+          this.onOff = true
+        }
+      }
+      
+    }
+    
+  </script>
+</body>
+</html>

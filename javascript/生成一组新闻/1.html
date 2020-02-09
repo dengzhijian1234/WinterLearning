@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <input id="btn" type="button" value="生成新闻">
+  <ul id="list">
+
+  </ul>
+  <script>
+    var oUl = document.getElementById('list')
+    var oBtn = document.getElementById('btn')
+
+
+    var arr = ['中央指导组赴湖北黄冈指导落实“应收尽收”等防控举措',
+      '以“三农”高质量发展助力“两大目标任务”顺利完成',
+      '胡同人家过上现代生活 人民网评 新华网评',
+      '咱这儿真像画里一样 中国经济扛得住疾风骤雨',
+      '病毒面前，人类没有旁观者 口罩省着用，统共有几招？']
+    var a = true
+    oBtn.onclick = function () {
+      
+      if (a) {
+        for (var i = 0; i < arr.length; i++) {
+          oUl.innerHTML += '<li>' + arr[i] + '</li>'
+        }
+        a = false
+        oBtn.value = '收起'
+      }else{
+        oUl.innerHTML = ''
+        oBtn.value = '生成新闻'
+        a = true
+      }
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  #box{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .box{
+    width: 50px;
+    height: 50px;
+    border: 1px solid red;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    /* text-align: center; */
+    /* line-height: 50px; */
+  }
+</style>
+<body>
+  <div id="box"></div>
+  <script>
+    var oBox = document.getElementById('box')
+    for (var i=0; i< 100; i++) {
+      oBox.innerHTML += '<input class="box" type="button" value="A"></input>'
+    }
+
+    var aBox = oBox.getElementsByTagName('input')
+    var arr = ['B','C','D']
+    for (var i=0; i<aBox.length; i++) {
+      aBox[i].num = 0
+      aBox[i].onclick = function () {
+        var a = arr[this.num]
+        this.num ++
+        this.value = a
+        if(this.num == arr.length) {
+          this.num = 0
+        }
+      }
+    }
+  </script>
+</body>
+</html>
