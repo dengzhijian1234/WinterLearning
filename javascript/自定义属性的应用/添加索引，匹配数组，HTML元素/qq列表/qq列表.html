@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    ul,
+    h3 {
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    #list {
+      width: 240px;
+      border: 1px solid red;
+      margin: 0 auto;
+      ;
+    }
+
+    .d {
+      display: flex;
+      background: #66ffff;
+      ;
+    }
+
+    #list .lis li {
+      text-indent: 24px;
+      border-bottom: 1px solid black;
+    }
+
+    #list .lis ul {
+      display: none;
+    }
+
+    .active {
+      display: flex;
+      background: yellow;
+    }
+
+    .a {
+      background: #66ffff;
+    }
+  </style>
+</head>
+
+<body>
+  <ul id="list">
+    <li class="lis">
+      <div class="d"><img style="width: 20px;height: 20px;margin-top: 3px;" src="./imgs/1.png" alt="">
+        <h3>我的好友</h3>
+      </div>
+      <ul>
+        <li>张三</li>
+        <li>李四</li>
+        <li>王五</li>
+      </ul>
+    </li>
+    <li class="lis">
+      <div class="d"><img style="width: 20px;height: 20px;margin-top: 3px;" src="./imgs/1.png" alt="">
+        <h3>小黄人</h3>
+      </div>
+      <ul>
+        <li>老钟</li>
+        <li>小白</li>
+        <li>唐子</li>
+        <li>叶明</li>
+        <li>鸡蛋</li>
+        <li>猪肉</li>
+        <li>昊哥</li>
+        <li>军哥</li>
+        <li>佳音</li>
+        <li>医生</li>
+      </ul>
+    </li>
+    <li class="lis">
+      <div class="d"><img style="width: 20px;height: 20px;margin-top: 3px;" src="./imgs/1.png" alt="">
+        <h3>小宝贝</h3>
+      </div>
+      <ul>
+        <li>小丽</li>
+      </ul>
+    </li>
+  </ul>
+  <script>
+    var aDiv = document.getElementsByTagName('div')
+    var oUl = document.getElementById('list')
+    var aUl = oUl.getElementsByTagName('ul')
+    var aImg = document.getElementsByTagName('img')
+
+
+    var oldDiv = ''
+    var oldUl = aUl[0]
+    for (var i = 0; i < aDiv.length; i++) {
+      aDiv[i].index = i
+      aDiv[i].onclick = function () {
+        if (this == oldDiv) {
+          this.className = 'd'
+          oldUl.style.display = 'none'
+          oldDiv = ''
+        } else {
+          oldDiv.className = 'd'
+          oldUl.style.display = 'none'
+          this.className = 'active'
+          aUl[this.index].style.display = 'block'
+          oldDiv = this
+          oldUl = aUl[this.index]
+        }
+      }
+    }
+
+
+    var arrLi = []
+    for (var i = 0; i < aUl.length; i++) {
+      aLi = aUl[i].getElementsByTagName('li')
+      for (var j = 0; j < aLi.length; j++) {
+        arrLi.push(aLi[j])
+      }
+    }
+
+    var oldLi = '';
+    for (var i = 0; i < arrLi.length; i++) {
+      arrLi[i].onclick = function () {
+        if (this == oldLi) {
+          this.className = ''
+          oldLi = ''
+        } else {
+          oldLi.className = ''
+          this.className = 'a'
+          oldLi = this
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

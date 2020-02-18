@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    li {
+      list-style: none;
+    }
+  </style>
+</head>
+
+<body>
+  <ul id="list">
+    <li>
+      <input type="button" value="-">
+      <strong>0</strong>
+      <input type="button" value="+">
+      单价: <em>5元</em>
+      小计: <span>0元</span>
+    </li>
+    <li>
+      <input type="button" value="-">
+      <strong>0</strong>
+      <input type="button" value="+">
+      单价: <em>3.5元</em>
+      小计: <span>0元</span>
+    </li>
+    <li>
+      <input type="button" value="-">
+      <strong>0</strong>
+      <input type="button" value="+">
+      单价: <em>12.5元</em>
+      小计: <span>0元</span>
+    </li>
+    <li>
+      <input type="button" value="-">
+      <strong>0</strong>
+      <input type="button" value="+">
+      单价: <em>6元</em>
+      小计: <span>0元</span>
+    </li>
+    <li>
+      <input type="button" value="-">
+      <strong>0</strong>
+      <input type="button" value="+">
+      单价: <em>8元</em>
+      小计: <span>0元</span>
+    </li>
+  </ul>
+  <script>
+    var aUl = document.getElementById('list')
+    var aLi = aUl.getElementsByTagName('li')
+
+    for (var i=0;i<aLi.length; i++) {
+      fn(aLi[i])
+    }
+
+    function fn(oLi) {
+      var btn1 = oLi.getElementsByTagName('input')[0]
+      var btn2 = oLi.getElementsByTagName('input')[1]
+      var oStrong = oLi.getElementsByTagName('strong')[0]
+      var oEm = oLi.getElementsByTagName('em')[0]
+      var oSpan = oLi.getElementsByTagName('span')[0]
+      var n1 = Number(oStrong.innerHTML)
+      var n2 = parseFloat(oEm.innerHTML)
+
+      btn1.onclick = function () {
+        n1--
+        if (n1 == -1) {
+          n1 = 0
+        } else {
+          oStrong.innerHTML = n1
+          oStrong.innerHTML = n1
+          oSpan.innerHTML = n1 * n2 + '元'
+        }
+      }
+      btn2.onclick = function () {
+        n1++
+        oStrong.innerHTML = n1
+        oStrong.innerHTML = n1
+        oSpan.innerHTML = n1 * n2 + '元'
+      }
+    }
+
+
+  </script>
+</body>
+
+</html>

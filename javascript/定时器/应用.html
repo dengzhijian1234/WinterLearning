@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #box{
+      width: 100px;
+      height: 100px;
+      background: red;
+      position: absolute;
+      top: 50px;
+      left: 30px;
+    }
+  </style>
+</head>
+<body>
+  <button id="btn">开关</button>
+  <div id="box"></div>
+  <script>
+    var oBtn = document.getElementById('btn')
+    var oDiv = document.getElementById('box')
+    oBtn.onclick = function() {
+      clearInterval(oDiv.timer)
+      oDiv.timer = setInterval(function(){ // 把开关设置为自定义属性
+        var speed = parseInt(getStyle(oDiv,'left')) + 10
+        if(speed>=800){
+          speed = 800
+        }
+        oDiv.style.left = speed + 'px'
+        if(speed ==800){
+          clearInterval(oDiv.timer)
+        }
+      },30)
+    }
+    function getStyle(obj,attr) {
+      return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr]
+    }
+  </script>
+</body>
+</html>

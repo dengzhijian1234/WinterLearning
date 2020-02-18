@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      background: #333;
+    }
+
+    ul {
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    #pic {
+      width: 500px;
+      height: 600px;
+      position: relative;
+      margin: 0 auto;
+      /* border: 1px solid red; */
+      background: #fff;
+    }
+
+    #pic img {
+      width: 500px;
+      height: 600px;
+    }
+
+    #pic span,
+    #pic p {
+      width: 500px;
+      height: 30px;
+      position: absolute;
+      text-align: center;
+      line-height: 30px;
+      margin: 0;
+      left: 0;
+      color: #fff;
+      background: #000;
+      opacity: 0.2;
+    }
+
+    #pic span {
+      top: 0;
+    }
+
+    #pic p {
+      bottom: 0;
+    }
+
+    #pic ul {
+      width: 40px;
+      position: absolute;
+      right: -50px;
+      top: 0;
+    }
+
+    #pic li {
+      width: 40px;
+      height: 40px;
+      background: blue;
+      margin-bottom: 10px;
+    }
+
+    #pic .active {
+      background: yellow;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="pic">
+    <img src="" alt="">
+    <span>数字正在加载</span>
+    <p>文字说明正在加载</p>
+    <ul>
+
+    </ul>
+  </div>
+  <script>
+    var oImg = document.getElementsByTagName('img')[0]
+    var ospan = document.getElementsByTagName('span')[0]
+    var oP = document.getElementsByTagName('p')[0]
+    var oUl = document.getElementsByTagName('ul')[0]
+    var aLi = document.getElementsByTagName('li')
+
+    //数据初始化
+    var arrImg = ["./imgs/1.jpeg", "./imgs/2.jpeg", "./imgs/3.jpeg", "./imgs/4.jpeg", "./imgs/5.jpeg", "./imgs/6.jpeg"]
+    var arrText = ["南丰的志坚", "可爱的熊", "乐盈广场", "甜蜜呀", "摩天轮上的小丽", "摩天轮上的我们"]
+    var num = 0
+
+    for (var i = 0; i < arrImg.length; i++) {
+      oUl.innerHTML += '<li></li>'
+    }
+    var oldLi = aLi[num]
+    function fn() {
+      oImg.src = arrImg[num]
+      ospan.innerHTML = 1 + num + " / " + arrImg.length
+      oP.innerHTML = arrText[num]
+      aLi[num].className = 'active'
+    }
+    fn()
+
+    // 添加点击事件
+    for (var i = 0; i < arrImg.length; i++) {
+      aLi[i].index = i //添加索引
+      aLi[i].onclick = function () {
+        // alert(1)
+        num = this.index
+        fn()
+        // //思路一 ： 全部清空当前添加
+        // for(var i=0;i<arrImg.length; i++) {
+        //   aLi[i].className = ''
+        // }
+        // this.className = 'active'
+
+        // 思路二： 清空上一个。当前添加
+        oldLi.className = ''
+        oldLi = this
+      }
+    }
+
+  </script>
+</body>
+
+</html>
