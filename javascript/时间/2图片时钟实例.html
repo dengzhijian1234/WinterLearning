@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  p{
+    font-size: 30px;
+  }
+  img{
+    width: 80px;
+    height: 100px;
+  }
+</style>
+<body>
+  <p></p>
+  <img src="./imgs/0.png" alt="">
+  <img src="./imgs/0.png" alt="">
+  <img src="./imgs/0.png" alt="">
+  <img src="./imgs/0.png" alt="">
+  <img src="./imgs/0.png" alt="">
+  <img src="./imgs/0.png" alt="">
+  <script>
+    var oP = document.getElementsByTagName('p')[0]
+    var aImg = document.getElementsByTagName('img')
+    timeFn()
+
+    setInterval(timeFn, 1000);
+    function timeFn() {
+      var myTime = new Date() // myTime typeof obj
+
+      var iHours = myTime.getHours()
+      var iMin = myTime.getMinutes()
+      var iSec = myTime.getSeconds()
+
+      var str = ''
+      str =  toTwo(iHours)+ toTwo(iMin) + toTwo(iSec)
+      oP.innerHTML = str
+      // str = "212508"
+      for(var i=0;i<aImg.length;i++){
+        aImg[i].src = './imgs/'+ str.charAt(i) +'.png' // charAt 可以读取 字符串
+      }
+    }
+    function toTwo(i) {
+      if (i < 10) {
+        return i = '0' + i
+      }
+      else return '' + i
+    }
+  </script>
+</body>
+
+</html>

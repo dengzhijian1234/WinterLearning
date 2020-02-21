@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    .txt{
+      width: 300px;
+    }
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  距离<input type="text" class="txt"></br>还有<input type="text" class="txt"><input type="button" value="开始倒计时">
+  <script>
+    var aInput = document.getElementsByTagName('input')
+    var Btn = aInput[2]
+    var New = null
+    var Now = null
+    var t = 0
+    var str = ''
+    Btn.onclick = function() {
+      New = new Date(aInput[0].value)
+      Now = new Date()
+      t = Math.floor((New - Now)/1000) 
+      str = Math.floor(t/86400) + '天' +Math.floor(t%86400/3600) + '时' + Math.floor(t%86400%3600/60) + '分' + t%60 + '秒'
+      aInput[1].value = str
+    }
+  </script>
+</body>
+</html>

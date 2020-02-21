@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./getStyle.js"></script>
+  <style>
+    img{
+      width: 80px;
+      height: 100px;
+    }
+    ul{
+      padding: 0;
+      position: absolute;
+      top: 100px;
+      left: 200px;
+    }
+    li{
+      list-style: none;
+      margin-bottom: -10px;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li class="1"><img src="./imgs/0.png" alt=""></li>
+    <li class="2"><img src="./imgs/0.png" alt=""></li>
+    <script>
+      var aLi = document.getElementsByTagName('Li')
+      alert(getStyle(aLi[1],'left'))
+    </script>
+  </ul>
+</body>
+</html>
