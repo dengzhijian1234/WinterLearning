@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./getStyle.js"></script>
+  <style>
+    img{
+      width: 200px;
+      position: absolute;
+      left: 200px;
+      top: 100px;
+    }
+  </style>
+</head>
+<body>
+  <img src="./img/2.jpg" alt="">
+  <script>
+    var oImg = document.getElementsByTagName('img')[0]
+    var arr =[] // 20 -20 18 -18
+    var timer = null
+    var a = parseInt(getStyle(oImg,'left'))
+    for (var i=20;i>0;i-=2) {
+      arr.push(i,-i)
+    }
+    arr.push(0)
+    console.log(arr)
+    oImg.onclick = function(){
+      var num =0
+      clearInterval(timer)
+      timer = setInterval(function(){
+        oImg.style.left = a + arr[num] + 'px'
+        num++
+        if(num == arr.length){
+          clearInterval(timer)
+        }
+      },30)
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+      系统时间
+      new Date() 当前时间
+    */
+    timeFn()
+
+    setInterval(timeFn, 1000);
+    function timeFn() {
+      var myTime = new Date() // myTime typeof obj
+
+      // 获取的都是number
+      var iYear = myTime.getFullYear()
+      var iMonth = myTime.getMonth() + 1 // 注意
+      var iDate = myTime.getDate()
+      var iWeek = myTime.getDay()
+      var iHours = myTime.getHours()
+      var iMin = myTime.getMinutes()
+      var iSec = myTime.getSeconds()
+
+      if (iWeek === 0) iWeek = '星期日'
+      if (iWeek === 1) iWeek = '星期一'
+      if (iWeek === 2) iWeek = '星期二'
+      if (iWeek === 3) iWeek = '星期三'
+      if (iWeek === 4) iWeek = '星期四'
+      if (iWeek === 5) iWeek = '星期五'
+      if (iWeek === 6) iWeek = '星期六'
+
+      var str = ''
+      str = iYear + '年' + iMonth + '月' + iDate + '日 ' + iWeek + '' + toTwo(iHours) + ':' + toTwo(iMin) + ":" + toTwo(iSec)
+      var onBody = document.body
+      onBody.innerHTML = str
+    }
+    function toTwo(i) {
+      if(i<10){
+        return i = '0' + i
+      }
+      else return '' + i
+    }
+
+  </script>
+</body>
+
+</html>

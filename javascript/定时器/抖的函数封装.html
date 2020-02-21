@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./getStyle.js"></script>
+  <style>
+    img {
+      width: 200px;
+      position: absolute;
+      left: 200px;
+      top: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <img src="./img/2.jpg" alt="">
+  <script>
+    var oImg = document.getElementsByTagName('img')[0]
+    // console.log(arr)
+    oImg.pos = parseInt(getStyle(oImg, 'left'))
+    oImg.onclick = function () {
+      shake(oImg,'left',function(){
+        shake(oImg,'top')
+      })
+    }
+    function shake(obj, attr, endFn ) {
+      var num = 0
+      var arr = [] // 20 -20 18 -18
+      for (var i = 20; i > 0; i -= 2) {
+        arr.push(i, -i)
+      }
+      arr.push(0)
+      
+      var pos = obj.pos
+      clearInterval(obj.timer)
+      obj.timer = setInterval(function () {
+        obj.style[attr] = pos + arr[num] + 'px'
+        num++
+        if (num == arr.length) {
+          clearInterval(obj.timer)
+          endFn&&endFn()
+        }
+      }, 30)
+    }
+  </script>
+</body>
+
+</html>
