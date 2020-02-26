@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // filter 过滤 默认false 会返回一个空数组，如果为true则会将其返回
+    var arr =[1,2,3,4,5,6,7,8,9]
+
+    // 取偶
+    var newArr = []
+    arr.forEach(function(item,index){
+      // console.log(item,index)
+      if(item % 2 == 0){
+        newArr.push(item)
+      }
+    })
+    console.log(newArr)
+
+
+    var filterNew = arr.filter(function(item,index){
+      console.log(item,index)
+    })
+    console.log(filterNew) // []
+    var filterNew = arr.filter(function(item,index){
+      // console.log(item,index)
+      return item % 2 == 0
+    })
+    console.log(filterNew) // [2, 4, 6, 8]
+    var filterNew = arr.filter(function(item,index){
+      // console.log(item,index)
+      return true
+    })
+    console.log(filterNew) // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  </script>
+</body>
+</html>

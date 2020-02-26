@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var f = () => {
+      console.log(123)
+    }
+    f()
+    var add= ()=> 2
+    console.log(add())
+    var add = a => a+2
+    console.log(add(1))
+    var add = (a,b) => a+b // 最后面相当于直接return a+b
+    console.log(add(1,3))
+    var add = (a,b) => {num: a+b} // 大括号相当于函数体
+    console.log(add(1,3)) // undefined
+    // 如果要返回一个对象需要加一个()
+    var add = (a,b) => ({num: a+b})
+    console.log(add(1,3))
+
+    var add = (a,b) => {
+      if(a<10) {
+        a = 1000
+      }
+      return a+b
+    } // 函数体
+    console.log(add(1,3))
+  </script>
+</body>
+</html>

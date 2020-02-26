@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  div{
+    width: 100px;
+    height: 100px;
+    background: red;
+    margin-bottom: 50px;
+  }
+</style>
+<body>
+  <div></div>
+  <div></div>
+  <script>
+    // 普通函数的this是在调用的时候确定的，
+    // 箭头函数的this是在定义的时候调用的，你在哪个作用域里面定义，就绑定哪个this
+    // 不可以当构造函数
+    // 没有arguments
+    document.onclick = function () {
+      var that = this
+      setTimeout(function(){
+        console.log(this) // 定时器的this指向 window
+        console.log(that) // document
+      },1000)
+    }
+    document.getElementsByTagName('div')[0].onclick = function(){
+      console.log(this)
+      setTimeout(()=>{
+        console.log(this) // 箭头函数的this是在定义的时候调用的，你在哪个作用域里面定义，就绑定哪个this
+      },500)
+    }
+
+    
+    document.getElementsByTagName('div')[1].onclick = () => {
+      console.log(this) // 箭头函数在window中定义的
+      setTimeout(()=>{
+        console.log(this) // this = window
+      },500)
+    }
+  </script>
+</body>
+</html>

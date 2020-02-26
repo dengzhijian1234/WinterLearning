@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var str = '提取字符串中两个指定的索引号之间的字符'  
+
+    
+    console.log(str.substring(0,2))
+    console.log(str.substring(2,0))  // substring可以检测大小
+    console.log(str.substring(-3,2)) // 负数 变为 0
+    console.log(str.substring(2,-3))
+
+
+    console.log(str.slice(0,2)) 
+    console.log(str.slice(2,0)) //不交换位置 所以读取不到
+    console.log(str.slice(-4,-2)) // 负数 为 从后面数
+  </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let arr = [1,2,3,4]
+    // let a = arr[0]
+    // let b = arr[1]
+    // let c = arr[2]
+    // let d = arr[3]
+    // 解构
+    var [a,b,c,d,e = '默认值'] = arr
+    console.log(a) //1
+    console.log(e) //默认值（undefined） //如果 arr中存在e对应的值，则e = arr[4]
+
+
+    var obj = {
+      add: function(){},
+      isFunction: function(){},
+      fn: function(){}
+    }
+    /*
+      obj.add()
+      obj.isFunction()
+      obj.fn()
+    */
+    let {add} = obj
+    console.log(add) // function(){}
+    let {isFunction,fn,isArray} = obj
+    console.log(fn)
+    console.log(isFunction)
+    console.log(isArray) // undefined
+
+
+
+    // function fn(option) {
+    //   console.log(option.a)
+    //   console.log(option.b)
+    //   console.log(option.c)
+    //   console.log(option.d)
+    // }
+    function fn1({a,b,c,d = "go",e = 'get'}){
+      console.log(a)
+      console.log(b)
+      console.log(c)
+      console.log(d) // 4
+      console.log(e) // get
+    }
+    fn1({a:1,b:2,c:3,d:4})
+  </script>
+</body>
+</html>

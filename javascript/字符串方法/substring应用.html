@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    p{
+      width: 200px;
+      background: yellow;
+      margin: 100px auto;
+    }
+  </style>
+</head>
+<body>
+<p><span>在 JavaScript 中，字符串写在单引号或双引号中。
+
+    因为这样，以下实例 JavaScript 无法解析：</br>
+   
+    "We are the so-called "Vikings" from the north."
+   字符串 "We are the so-called " 被截断。
+   
+   如何解决以上的问题呢？可以使用反斜杠 (\) 来转义 "Vikings" 字符串中的双引号，如下:</span>
+   ......
+   <a href="javascript:;">>>收起</a></p>
+   <script>
+     var oP = document.getElementsByTagName('p')[0]
+     var oSpan = document.getElementsByTagName('span')[0]
+     var oA = document.getElementsByTagName('a')[0]
+     var str = oSpan.innerHTML
+     var str1 = str.substring(0,18)
+     var onOff = true
+    //  console.log(str1)
+    oA.onclick = function() {
+      if(onOff){
+        oSpan.innerHTML = str1
+        oA.innerHTML = '>>展开'
+      }else{
+        oSpan.innerHTML = str
+        oA.innerHTML = '>>收起'
+      }
+      onOff=!onOff
+    }
+   </script>
+</body>
+</html>

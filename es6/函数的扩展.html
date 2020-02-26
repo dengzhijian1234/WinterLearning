@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+      /*
+        函数参数的默认值
+          给形参直接赋值
+          不能用let ,const 再次赋值，会报错
+      */
+    function fn(a = 10) {
+      console.log(a)
+    }
+    fn() // 10
+    fn(1) // 1
+
+    // rest
+    function fn1(...arr) { // rest 传参会把参数放到数组里面
+      console.log(arguments)
+      console.log(arr)
+    }
+    fn1(1,2,3,4)
+    function fn2(a,...arr) { // 把除了a以外的参数放到数组里面
+      console.log(arguments)
+      console.log(arr)
+    }
+    fn2(1,2,3,4)
+  </script>
+</body>
+</html>

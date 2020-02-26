@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var a = '123'
+    var obj = {
+      a,
+      fn: function () { },
+      fn1() { } //相当于fn1: function() {},
+    }
+    console.log(obj)
+
+    var until = (function () {
+      function add() { console.log(1+2) }
+
+      function isFunction() { }
+
+      function isArray() { }
+      return {
+        add,
+        isFunction,
+        isArray
+      }
+    })()
+    until.add()
+
+
+    // Object.assign(target,[]) 如果属性相同，会把前面的覆盖掉
+    var o = {a:1}
+    var p = {b:2}
+    var q = {c:3}
+    Object.assign(o,p,q)
+    console.log(o) // {a: 1, b: 2, c: 3}
+
+    function asg(option) {
+      let defaults = {
+        a: '默认值1',
+        b: '默认值2',
+        c: '默认值3',
+        d: '默认值4'
+      }
+      Object.assign(defaults,option)
+      console.log(defaults) // {a: 1, b: 2, c: 3, d: "默认值4"}
+    }
+    asg({
+      a:1,
+      b:2,
+      c:3
+    })
+  </script>
+</body>
+
+</html>
