@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // reduce的作用，对数组中所有的内容进行汇总
+    // preValue 0 n 1 => 0+1
+    // preValue 1 n 2 => 1+2
+    // .......
+    let a = [1,2,3,4,6,8,9,10]
+    let b = a.reduce(function(preValue, n) {
+      return preValue + n
+    },0)
+    console.log(b) // 43 = 0 + 1,2,3,4,6,8,9,10
+
+    let c = [2,4,6]
+    let d = c.reduce(function(preValue, n){
+      return preValue + n
+    },1)
+    console.log(d) // 13
+    // preValue 1 n 2 => 1+2
+    // preValue 3 n 4 => 3+4
+    // preValue 7 n 6 => 7+6
+    let e = [2,4,6]
+    let f = c.reduce(function(preValue, n) {
+      return preValue * n
+    },1)
+    console.log(f)
+  </script>
+</body>
+</html>
