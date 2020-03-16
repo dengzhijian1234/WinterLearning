@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="app">+
+    <cpn :number1="num1" :number2="num2" :number3="num3" @num3change="num3change"></cpn>
+  </div>
+
+
+  <template id="cpn">
+      <div>
+        <h2>props:{{number1}}</h2>
+        <h2>data:{{dnumber1}}</h2>
+        <!-- 绑定的props的值， props的值改变了，但是不会改变data，因为data最开始就已经确定了是父组件传过来的值 -->
+        <input type="text" v-model="number1"> 
+        <h2>props:{{number2}}</h2>
+        <h2>data:{{dnumber2}}</h2>
+        <input type="text" v-model="dnumber2">
+        <h2>props:{{number3}}</h2>
+        <h2>data:{{dnumber3}}</h2>
+        <!-- <input type="text" v-model="dnumber3"> -->
+        <!-- <input type="text" :value="dnumber3" @input="dnumber3=$event.target.value"> v-model的原理 -->
+        <input type="text" :value="dnumber3" @input="num3Input">
+      </div>
+  </template>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        num1: 1,
+        num2: 2,
+        num3: 3
+      },
+      methods: {
+        num3change (value) {
+          // 注意，从html input 中获取的东西都是string类型，所以要用parseInt进行转换
+
+          this.num3 = parseInt(value)
+        }
+      },
+      components: {
+        cpn: {
+          template: '#cpn',
+          data () {
+            return {
+              dnumber1: this.number1,
+              dnumber2: this.number2,
+              dnumber3: this.number3
+            }
+          },
+          // props最大的作用就是让父组件来传值，所以值的改变也要在父组件中修，不然会报错
+          // 最好就是用data 初始化一下props传过来的值
+          // 这样改变的是data中的值，不会改变props传过来的
+          props: {
+            number1: Number,
+            number2: Number,
+            number3: Number
+          },
+          methods: {
+            num3Input (event) {
+              // 将input的value赋值给data中的.dnumber3
+              this.dnumber3 = event.target.value
+              // 让父组件可以修改num3
+              this.$emit('num3change', this.dnumber3)
+            }
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

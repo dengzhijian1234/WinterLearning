@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <!-- 
+    通过props传值，
+    首先在子组件的标签内传入要传的值，
+    然后再props中引入
+    就可以使用了
+    注意props的驼峰标识，如下的cMessage
+   -->
+  <div id="app">
+    <cpn :cmovies="movies" :c-message="message"></cpn>
+  </div>
+  <template id="cpn">
+    <div>
+      <ul>
+        <li v-for="item in cmovies">{{item}}</li>
+      </ul>
+      <h2>{{cMessage}}</h2>
+    </div>
+  </template>
+  <script>
+    const cpn = {
+      template: '#cpn',
+      props: {
+        cmovies: {
+          type: Array, // 类型限制
+          default: [],
+          // require: true // require必要的， 必须传值，不然报错 
+        },
+        cMessage: {
+          type: String,
+          default: 'a'
+        }
+      },
+      data() {
+        return {
+
+        }
+      }
+    }
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你好啊',
+        movies: ['海王','海贼王','复仇者联盟']
+      },
+      components: {
+        cpn
+      }
+    })
+  </script>
+</body>
+
+</html>

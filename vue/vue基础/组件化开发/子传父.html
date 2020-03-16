@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <!-- 
+    通过props传值，
+    首先在子组件的标签内传入要传的值，
+    然后再props中引入
+    就可以使用了
+    注意props的驼峰标识，如下的cMessage
+   -->
+  <div id="app">
+    <!-- 自定义事件会默认把子组件传递的参数传过来 -->
+    <cpn @cpnclick="cpnClick"></cpn> 
+  </div>
+  <template id="cpn">
+    <div>
+      <button v-for="item in name" @click="btnClick(item)">{{item.name}}</button>
+    </div>
+  </template>
+  <script>
+    const cpn = {
+      template: '#cpn',
+      data () {
+        return {
+          name : [
+            {id: 1, name:'小白'},
+            {id: 2, name:'老钟'},
+            {id: 3, name:'唐子'}
+          ]
+        }
+      },
+      methods: {
+        btnClick (item) {
+          // console.log(item)
+          // 发射事件： 自定义事件
+          this.$emit('cpnclick',item) // 传给父组件的参数，相当于改自定义事件的默认参数。相当于@click的$event
+        }
+      }
+    }
+    const app = new Vue({
+      el: '#app',
+      components: {
+        'cpn': cpn
+      },
+      methods: {
+        cpnClick (item) {
+          console.log('cpnClick',item)
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

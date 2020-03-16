@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <!-- 事件调用方法没有参数，()可以省略 -->
+    <button @click="btn()">按钮1</button>
+    <button @click="btn">按钮2</button>
+
+    <!-- 在事件定义时，写函数时省略了小括号，但是方法本身是要传入参数的，这个时候
+      Vue会默认会把浏览器自动生成的event事件对象作为参数传入到方法
+    -->
+    <button @click="btn2(123)">按钮3</button>
+    <button @click="btn2">按钮4</button>
+    <!-- 在方法定义时，需要event参数，同时又需要其他参数时 -->
+    <button @click="btn">按钮5</button> <!--event会赋值给abc-->
+    <button @click="btn(123, event)">按钮6</button> <!--会报错，因为会把event当作变量传入，然而data中没有event-->
+    <button @click="btn(123, eve)">按钮7</button> <!--/////// 123 event-->
+    <!-- 在调用方法时，如何获取到浏览器自动生成的event事件 -->
+    <button @click="btn(abc,$event)">按钮8</button> <!--传入$event-->
+  </div>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你好啊',
+        eve: 'event',
+        abc: 123
+      },
+      methods: {
+        btn () {
+          console.log('btn')
+        },
+        btn2 (abc) {
+          console.log('--------', abc)
+        },
+        btn (abc,event) {
+          console.log('///////', abc, event)
+        }
+      }
+    })
+    // 如果函数有参数，但是调用的时候没有传入参数，那么函数的形参为undefined
+    function abc (a) {
+      console.log(a)
+    }
+    abc() // undefined
+  </script>
+</body>
+</html>
